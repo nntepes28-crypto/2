@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoHome — Многостраничный сайт</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Arial,sans-serif;background:#f5faf5;color:#222}
+    header{background:#2e7d32;color:#fff;padding:20px 40px}
+    nav ul{list-style:none;display:flex;gap:30px;flex-wrap:wrap}
+    nav li{position:relative;padding:10px 0}
+    nav a{color:#fff;text-decoration:none;font-weight:bold}
+    .dropdown{display:none;position:absolute;top:100%;left:0;background:#fff;min-width:240px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:10}
+    .dropdown a{display:block;color:#222;padding:12px 16px}
+    nav li:hover .dropdown{display:block}
+    .page{display:none;padding:50px 40px;min-height:70vh}
+    .page.active{display:block}
+    .hero,.card{background:#fff;padding:30px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .hero{background:#e8f5e9;text-align:center}
+    .photo-placeholder{width:100%;max-width:600px;height:280px;margin:20px auto;background:#dfe6df;border:2px dashed #8ab58d;border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px}
+    .btn{display:inline-block;background:#2e7d32;color:#fff;padding:12px 20px;border:none;border-radius:8px;cursor:pointer;text-decoration:none}
+    input{padding:12px;width:100%;max-width:320px;border:1px solid #ccc;border-radius:8px}
+    .email-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+    footer{margin-top:30px;padding-top:20px;border-top:1px solid #ccc;font-size:14px}
+  </style>
+</head>
+<body>
+<header>
+  <h2>EcoHome</h2>
+  <p>Уют без вреда для планеты</p>
+  <nav>
+    <ul>
+      <li><a href="#" onclick="showPage('home'); return false;">Главная</a></li>
+      <li><a href="#">Каталог ▾</a><div class="dropdown">
+        <a href="#" onclick="showPage('cup'); return false;">Circular Cup</a>
+        <a href="#" onclick="showPage('brush'); return false;">Бамбуковая щетка</a>
+        <a href="#" onclick="showPage('bags'); return false;">Набор шопперов</a>
+      </div></li>
+      <li><a href="#">О нас ▾</a><div class="dropdown">
+        <a href="#" onclick="showPage('certs'); return false;">Наши сертификаты</a>
+        <a href="#" onclick="showPage('tech'); return false;">Технологии производства</a>
+      </div></li>
+      <li><a href="#">Блог ▾</a><div class="dropdown">
+        <a href="#" onclick="showPage('blog'); return false;">5 шагов к жизни без отходов</a>
+      </div></li>
+      <li><a href="#" onclick="showPage('email'); return false;">Email</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="home" class="page active"><div class="hero">
+  <h1>Ваш дом — это продолжение вашего мира</h1>
+  <img src="1/home-banner.jpg" alt="Главный баннер EcoHome" class="photo-placeholder">
+  <p>Ваш дом — это продолжение вашего мира. В EcoHome мы верим, что комфорт не должен стоить здоровья планеты. Мы собрали в одном месте стильные и функциональные вещи из переработанного пластика, бамбука и органического хлопка. Закажите сегодня и получите доставку за 2 часа прямо к вашей двери. Маленькие шаги ведут к большим переменам. Начните свой путь к осознанности вместе с нами!</p>
+  <br><button class="btn" onclick="showPage('email')">Получить скидку</button>
+  <footer>Контакты: +7 (777) 123-45-67 | ecohome@mail.com<br>© 2026 EcoHome</footer>
+</div></section>
+
+<section id="cup" class="page"><div class="card"><h2>Circular Cup</h2><img src="1/cup.jpg" alt="Circular Cup" class="photo-placeholder"><p>Изготовлен из переработанных одноразовых кофейных стаканчиков. Сохраняет тепло до 3 часов, полностью герметичен и подходит для мытья в посудомоечной машине.</p><footer>Контакты: +7 (777) 123-45-67 | ecohome@mail.com<br>© 2026 EcoHome</footer></div></section>
+<section id="brush" class="page"><div class="card"><h2>Бамбуковая щетка</h2><img src="1/brush.jpg" alt="Бамбуковая щетка" class="photo-placeholder"><p>Экологичная альтернатива пластиковым щеткам. Ручка из натурального бамбука, мягкая щетина и минимальный вред окружающей среде.</p><footer>Контакты: +7 (777) 123-45-67 | ecohome@mail.com<br>© 2026 EcoHome</footer></div></section>
+<section id="bags" class="page"><div class="card"><h2>Набор шопперов</h2><img src="1/bags.jpg" alt="Набор шопперов" class="photo-placeholder"><p>Многоразовые сумки из органического хлопка для ежедневных покупок. Прочные, стильные и помогают сократить использование пластиковых пакетов.</p><footer>Контакты: +7 (777) 123-45-67 | ecohome@mail.com<br>© 2026 EcoHome</footer></div></section>
+
+<section id="certs" class="page">
+  <div class="card">
+    <h2>Наши сертификаты</h2>
+
+    <div style="display:flex; gap:20px; flex-wrap:wrap; margin:20px 0; justify-content:center;">
+      <img src="1/fsc.jpg" alt="FSC сертификат" style="width:180px; border-radius:10px;">
+      <img src="1/grs.webp" alt="GRS сертификат" style="width:180px; border-radius:10px;">
+      <img src="1/oeko.jpg" alt="OEKO-TEX сертификат" style="width:180px; border-radius:10px;">
+    </div>
+
+    <p><b>FSC:</b> подтверждает ответственное происхождение бумажной и бамбуковой продукции.</p>
+    <p><b>Global Recycled Standard (GRS):</b> подтверждает использование переработанных материалов.</p>
+    <p><b>OEKO-TEX:</b> безопасность тканей и отсутствие вредных веществ.</p>
+
+    <footer>
+      Контакты: +7 (777) 123-45-67 | ecohome@mail.com<br>
+      © 2026 EcoHome
+    </footer>
+  </div>
+</section>
+
+<section id="tech" class="page"><div class="card"><h2>Технологии производства</h2><img src="1/production.jpg" alt="Технологии производства" class="photo-placeholder"><p>Мы используем современные технологии производства из вторсырья: сортировка, очистка, измельчение и повторное формование материалов. Это позволяет создавать качественные и долговечные товары с минимальным воздействием на природу.</p><footer>Контакты: +7 (777) 123-45-67 | ecohome@mail.com<br>© 2026 EcoHome</footer></div></section>
+
+<section id="blog" class="page"><div class="card"><h2>5 шагов к жизни без отходов</h2><img src="1/zero-waste.jpg" alt="Жизнь без отходов" class="photo-placeholder"><p>
+1. Используйте многоразовые сумки.<br>
+Откажитесь от пластиковых пакетов — носите с собой шоппер или тканевую сумку. Это простой шаг, который уменьшает количество мусора каждый день.<br><br>
+
+2. Откажитесь от одноразовой посуды.<br>
+Стаканчики, трубочки и контейнеры создают огромное количество отходов. Замените их на многоразовые альтернативы — термокружки и контейнеры.<br><br>
+
+3. Сортируйте отходы дома.<br>
+Разделяйте пластик, бумагу, стекло и органику. Это помогает перерабатывать материалы и уменьшает нагрузку на свалки.<br><br>
+
+4. Покупайте товары в перерабатываемой упаковке.<br>
+Выбирайте продукты с минимальной упаковкой или в стекле/бумаге. Это снижает загрязнение окружающей среды.<br><br>
+
+5. Выбирайте долговечные вещи вместо одноразовых.<br>
+Лучше купить одну качественную вещь, чем постоянно заменять дешёвые. Это экономит деньги и ресурсы планеты.
+</p><footer>Контакты: +7 (777) 123-45-67 | ecohome@mail.com<br>© 2026 EcoHome</footer></div></section>
+
+<section id="email" class="page"><div class="card email-grid">
+  <img src="1/email-banner.png" alt="Email баннер" class="photo-placeholder" style="height:380px;max-width:none;">
+  <div>
+    <h2 style="font-size:54px;line-height:1;margin-bottom:20px;">Welcome<br>to EcoHome</h2>
+    <p>Получи скидку 15% на первый заказ. </p><br>
+    <input type="email" id="emailInput" placeholder="Введите ваш email">
+    <br><br>
+    <button class="btn" onclick="subscribe()">Использовать скидку</button>
+    <p id="result" style="margin-top:15px"></p>
+    <footer>Контакты: +7 (777) 123-45-67 | ecohome@mail.com<br>© 2026 EcoHome</footer>
+  </div>
+</div></section>
+
+<script>
+(function(){ if(window.emailjs){ emailjs.init('Re1rVrMJcMVAcMmLr'); }})();
+function showPage(id){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); const el=document.getElementById(id); if(el) el.classList.add('active'); }
+function subscribe(){
+ const email=document.getElementById('emailInput').value; const result=document.getElementById('result');
+ if(!email || !email.includes('@')){ result.textContent='Введите корректный email Gmail или Mail.ru'; return; }
+ emailjs.send('service_tpbh1qr','template_fhwnshn',{ to_email: email, subject:'Твоя скидка EcoHome', message:'Добро пожаловать! Твоя скидка 15%: GREEN15' })
+ .then(()=> result.textContent='Письмо успешно отправлено на '+email)
+ .catch(()=> result.textContent='Ошибка отправки. Проверь EmailJS.');
+}
+</script>
+</body>
+</html>
